@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+* {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+}
+
+.perspective {
+  perspective: 1200px;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}

@@ -86,8 +86,8 @@ export default function AdminPainel() {
           onChange={handleChange}
           className="p-3 rounded bg-[#0f0f0f] text-white border border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <option value="front">Front-end</option>
-          <option value="back">Back-end</option>
+          <option value="front">Sites</option>
+          <option value="back">Bots</option>
         </select>
         <button
           type="submit"

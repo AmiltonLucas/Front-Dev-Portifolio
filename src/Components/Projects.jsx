@@ -116,7 +116,7 @@ export default function Projects() {
           }`}
           onClick={() => setCategoria("front")}
         >
-          Front-end
+          Sites
         </button>
         <button
           className={`px-6 py-2 rounded-full font-semibold transition shadow ${
@@ -126,7 +126,7 @@ export default function Projects() {
           }`}
           onClick={() => setCategoria("back")}
         >
-          Back-end
+          Bots
         </button>
       </div>
       <div className="flex flex-wrap justify-center gap-10">

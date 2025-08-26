@@ -7,7 +7,7 @@ export default function AdminPainel() {
     descricao: "",
     imagem: "",
     tecnologias: "",
-    categoria: "front"
+    categoria: "sites", // mudou para sites/bots/sistemas
   });
   const [removerNome, setRemoverNome] = useState("");
 
@@ -23,7 +23,7 @@ export default function AdminPainel() {
       descricao: "",
       imagem: "",
       tecnologias: "",
-      categoria: "front"
+      categoria: "sites",
     });
   };
 
@@ -39,12 +39,18 @@ export default function AdminPainel() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0f0f0f] via-[#181818] to-blue-500 flex flex-col items-center py-12">
-      <h2 className="text-3xl font-bold text-blue-500 mb-8 neon-text">Painel Admin</h2>
+      <h2 className="text-3xl font-bold text-blue-500 mb-8 neon-text">
+        Painel Admin
+      </h2>
+
+      {/* Formulário adicionar projeto */}
       <form
         onSubmit={handleAddProjeto}
         className="bg-[#181818] p-8 rounded-xl shadow-lg w-full max-w-lg flex flex-col gap-6 mb-12 neon"
       >
-        <h3 className="text-xl font-semibold text-blue-500 mb-2">Adicionar Novo Projeto</h3>
+        <h3 className="text-xl font-semibold text-blue-500 mb-2">
+          Adicionar Novo Projeto
+        </h3>
         <input
           type="text"
           name="nome"
@@ -80,15 +86,19 @@ export default function AdminPainel() {
           className="p-3 rounded bg-[#0f0f0f] text-white border border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         />
+
+        {/* Novo select com 3 categorias */}
         <select
           name="categoria"
           value={form.categoria}
           onChange={handleChange}
           className="p-3 rounded bg-[#0f0f0f] text-white border border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <option value="front">Sites</option>
-          <option value="back">Bots</option>
+          <option value="sites">Sites</option>
+          <option value="bots">Bots</option>
+          <option value="sistemas">Sistemas</option>
         </select>
+
         <button
           type="submit"
           className="bg-blue-500 text-white py-3 rounded font-semibold hover:bg-blue-700 transition shadow-[0_0_6px_2px_#3b82f6]"
@@ -102,7 +112,9 @@ export default function AdminPainel() {
         onSubmit={handleRemoveByName}
         className="bg-[#181818] p-8 rounded-xl shadow-lg w-full max-w-lg flex flex-col gap-6 mb-12 neon"
       >
-        <h3 className="text-xl font-semibold text-blue-500 mb-2">Remover Projeto</h3>
+        <h3 className="text-xl font-semibold text-blue-500 mb-2">
+          Remover Projeto
+        </h3>
         <input
           type="text"
           placeholder="Nome do projeto para remover"
@@ -119,16 +131,34 @@ export default function AdminPainel() {
         </button>
       </form>
 
+      {/* Listagem dos projetos adicionados */}
       <div className="w-full max-w-3xl">
-        <h3 className="text-xl font-semibold text-white mb-4 text-center">Projetos Adicionados</h3>
+        <h3 className="text-xl font-semibold text-white mb-4 text-center">
+          Projetos Adicionados
+        </h3>
         <div className="grid md:grid-cols-2 gap-8">
           {projetos.map((proj, idx) => (
-            <div key={idx} className="bg-[#181818] p-6 rounded-xl shadow-lg neon flex flex-col items-center relative">
-              <img src={proj.imagem} alt={proj.nome} className="w-full h-40 object-cover rounded mb-4" />
+            <div
+              key={idx}
+              className="bg-[#181818] p-6 rounded-xl shadow-lg neon flex flex-col items-center relative"
+            >
+              <img
+                src={proj.imagem}
+                alt={proj.nome}
+                className="w-full h-40 object-cover rounded mb-4"
+              />
               <h4 className="text-lg font-bold text-blue-500">{proj.nome}</h4>
               <p className="text-gray-300 text-center mb-2">{proj.descricao}</p>
-              <span className="text-blue-500 font-semibold">{proj.tecnologias}</span>
-              <span className="text-xs text-gray-400 mt-2">{proj.categoria === "front" ? "Front-end" : "Back-end"}</span>
+              <span className="text-blue-500 font-semibold">
+                {proj.tecnologias}
+              </span>
+              <span className="text-xs text-gray-400 mt-2">
+                {proj.categoria === "sites"
+                  ? "Sites"
+                  : proj.categoria === "bots"
+                  ? "Bots"
+                  : "Sistemas"}
+              </span>
               <button
                 onClick={() => handleRemoveProjeto(idx)}
                 className="absolute top-2 right-2 bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700 transition text-xs font-bold shadow"

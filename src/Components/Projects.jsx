@@ -1,41 +1,37 @@
 import React, { useState } from "react";
-import Projeto from '../assets/WilsonSite.png';
-import Projeto2 from '../assets/Runaholic.png';
-import Projeto3 from '../assets/CasaDoPet.png';
-import Projeto4 from '../assets/CarServices.png';
+import Projeto from "../assets/WilsonSite.png";
+import Projeto2 from "../assets/Runaholic.png";
+import Projeto3 from "../assets/CasaDoPet.png";
+import Projeto4 from "../assets/CarServices.png";
 
-const projetosFront = [
+const projetosSites = [
   {
     nome: "Web site Melhor Opção",
-    descricao: "Pagína de vendas de cesta básica do nosso cliente Wilson.",
-    imagem:
-      Projeto,
-    tecnologias: "React, TailwindCSS, Backend em junglePython",
+    descricao: "Página de vendas de cesta básica do nosso cliente Wilson.",
+    imagem: Projeto,
+    tecnologias: "React, TailwindCSS, Backend em Django/Python",
   },
   {
     nome: "Site Runaholic",
     descricao: "Site de venda de produtos esportivos do nosso cliente Jonas.",
-    imagem:
-      Projeto2,
-    tecnologias: "React, TailwindCSS, Backend em junglePython",
+    imagem: Projeto2,
+    tecnologias: "React, TailwindCSS, Backend em Django/Python",
   },
   {
     nome: "Landing Page Pet Shop",
     descricao: "Landing page para pet shop com design moderno.",
-    imagem:
-      Projeto3,
-    tecnologias: "Html, CSS, JavaScript",
+    imagem: Projeto3,
+    tecnologias: "HTML, CSS, JavaScript",
   },
   {
     nome: "Site Car Services",
     descricao: "Site para serviços automotivos com agendamento online.",
-    imagem:
-      Projeto4,
-    tecnologias: "html, CSS, JavaScript",
+    imagem: Projeto4,
+    tecnologias: "HTML, CSS, JavaScript",
   },
 ];
 
-const projetosBack = [
+const projetosBots = [
   {
     nome: "API de Produtos",
     descricao: "API RESTful para gerenciamento de produtos.",
@@ -49,6 +45,37 @@ const projetosBack = [
     imagem:
       "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80",
     tecnologias: "NestJS, JWT",
+  },
+  {
+    nome: "Bot Telegram Financeiro",
+    descricao: "Bot para controle de finanças pessoais com integração em APIs.",
+    imagem:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80",
+    tecnologias: "Python, Telebot, PostgreSQL",
+  },
+];
+
+const projetosSistemas = [
+  {
+    nome: "Sistema de Gestão",
+    descricao: "Plataforma completa para gerenciamento empresarial.",
+    imagem:
+      "https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=400&q=80",
+    tecnologias: "React, Node.js, MySQL",
+  },
+  {
+    nome: "ERP Personalizado",
+    descricao: "ERP sob medida para pequenas e médias empresas.",
+    imagem:
+      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=400&q=80",
+    tecnologias: "Vue, Laravel, PostgreSQL",
+  },
+  {
+    nome: "Dashboard Analytics",
+    descricao: "Painel de BI para monitorar métricas em tempo real.",
+    imagem:
+      "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=400&q=80",
+    tecnologias: "Next.js, TailwindCSS, MongoDB",
   },
 ];
 
@@ -77,7 +104,9 @@ function CardFlip({ projeto }) {
             className="w-full h-full object-cover rounded-xl border-2 border-gray-200"
           />
           <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#181818]/80 to-transparent p-4">
-            <h3 className="text-xl font-semibold text-white text-center">{projeto.nome}</h3>
+            <h3 className="text-xl font-semibold text-white text-center">
+              {projeto.nome}
+            </h3>
           </div>
         </div>
         {/* Verso */}
@@ -99,36 +128,56 @@ function CardFlip({ projeto }) {
 }
 
 export default function Projects() {
-  const [categoria, setCategoria] = useState("front");
-  const projetos = categoria === "front" ? projetosFront : projetosBack;
+  const [categoria, setCategoria] = useState("sites");
+
+  const projetos =
+    categoria === "sites"
+      ? projetosSites
+      : categoria === "bots"
+      ? projetosBots
+      : projetosSistemas;
 
   return (
     <section className="px-8 py-16 bg-[#0f0f0f] min-h-[60vh]" id="projetos">
       <h2 className="text-3xl font-bold text-blue-500 mb-8 text-center">
         Nossos Projetos
       </h2>
+
+      {/* Botões de categorias */}
       <div className="flex justify-center gap-6 mb-10">
         <button
           className={`px-6 py-2 rounded-full font-semibold transition shadow ${
-            categoria === "front"
+            categoria === "sites"
               ? "bg-blue-500 text-white"
               : "bg-[#181818] text-blue-500 hover:bg-blue-500 hover:text-white"
           }`}
-          onClick={() => setCategoria("front")}
+          onClick={() => setCategoria("sites")}
         >
           Sites
         </button>
         <button
           className={`px-6 py-2 rounded-full font-semibold transition shadow ${
-            categoria === "back"
+            categoria === "bots"
               ? "bg-blue-500 text-white"
               : "bg-[#181818] text-blue-500 hover:bg-blue-500 hover:text-white"
           }`}
-          onClick={() => setCategoria("back")}
+          onClick={() => setCategoria("bots")}
         >
           Bots
         </button>
+        <button
+          className={`px-6 py-2 rounded-full font-semibold transition shadow ${
+            categoria === "sistemas"
+              ? "bg-blue-500 text-white"
+              : "bg-[#181818] text-blue-500 hover:bg-blue-500 hover:text-white"
+          }`}
+          onClick={() => setCategoria("sistemas")}
+        >
+          Sistemas
+        </button>
       </div>
+
+      {/* Cards */}
       <div className="flex flex-wrap justify-center gap-10">
         {projetos.map((projeto, idx) => (
           <CardFlip projeto={projeto} key={idx} />

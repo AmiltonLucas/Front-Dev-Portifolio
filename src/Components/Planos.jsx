@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 
-const planosFront = [
+const planosSites = [
   {
     nome: "Landing Page",
-    preco: "R$ 300 a 1.000",
     descricao: "Ideal para lançamentos e campanhas de pequeno porte.",
     itens: [
       "Design moderno",
@@ -16,7 +15,6 @@ const planosFront = [
   },
   {
     nome: "Web site",
-    preco: "R$ 2.000 a 4.000",
     descricao: "Perfeito para empresas que querem presença digital.",
     itens: [
       "Até 15 páginas",
@@ -28,7 +26,6 @@ const planosFront = [
   },
   {
     nome: "Web site + Web App + Dashboard",
-    preco: "A partir de R$ 4.100",
     descricao: "Perfeito para projetos de grande porte que querem presença digital.",
     itens: [
       "Sem limites de páginas",
@@ -40,10 +37,9 @@ const planosFront = [
   }
 ];
 
-const planosBack = [
+const planosBots = [
   {
-    nome: "Bots telegram",
-    preco: "A partir de R$ 4.000",
+    nome: "Bots Telegram",
     descricao: "Soluções personalizadas para gestão e automação.",
     itens: [
       "Integração com APIs",
@@ -53,55 +49,79 @@ const planosBack = [
     ]
   },
   {
-    nome: "API & Backend",
-    preco: "A partir de R$ 2.800",
-    descricao: "Estruture seu negócio com automação e dados.",
+    nome: "Chatbots IA",
+    descricao: "Automatize o atendimento e melhore a experiência do cliente.",
     itens: [
-      "Node.js ou Python",
-      "Banco de dados",
-      "Documentação",
-      "Suporte técnico"
+      "Integração com WhatsApp, Telegram e Web",
+      "Respostas inteligentes com IA",
+      "Customização avançada",
+      "Monitoramento e relatórios"
+    ]
+  }
+];
+
+const planosSistemas = [
+  {
+    nome: "Sistema de Gestão",
+    descricao: "Ideal para pequenas e médias empresas.",
+    itens: [
+      "Cadastro de clientes e produtos",
+      "Controle financeiro",
+      "Relatórios automáticos",
+      "Painel administrativo"
     ]
   },
   {
-    nome: "API & Backend",
-    preco: "A partir de R$ 2.800",
-    descricao: "Estruture seu negócio com automação e dados.",
+    nome: "ERP Personalizado",
+    descricao: "Controle total sobre processos empresariais.",
     itens: [
-      "Node.js ou Python",
-      "Banco de dados",
-      "Documentação",
-      "Suporte técnico"
+      "Gestão de estoque",
+      "Módulo de vendas",
+      "Integração com pagamentos",
+      "Relatórios avançados"
     ]
   }
 ];
 
 export default function Planos() {
-  const [categoria, setCategoria] = useState("front");
-  const planos = categoria === "front" ? planosFront : planosBack;
+  const [categoria, setCategoria] = useState("sites");
+
+  const planos = 
+    categoria === "sites" ? planosSites : 
+    categoria === "bots" ? planosBots : 
+    planosSistemas;
 
   return (
     <section className="px-8 py-16 bg-[#0f0f0f]" id="precos">
       <h2 className="text-3xl font-bold text-blue-500 mb-8 text-center neon-text">Nossos Planos</h2>
+      
+      {/* Botões de categorias */}
       <div className="flex justify-center gap-6 mb-10">
         <button
-          className={`px-6 py-2 rounded-full font-semibold transition shadow ${categoria === 'front' ? 'bg-blue-500 text-white' : 'bg-[#181818] text-blue-500 hover:bg-blue-500 hover:text-white'}`}
-          onClick={() => setCategoria('front')}
+          className={`px-6 py-2 rounded-full font-semibold transition shadow ${categoria === 'sites' ? 'bg-blue-500 text-white' : 'bg-[#181818] text-blue-500 hover:bg-blue-500 hover:text-white'}`}
+          onClick={() => setCategoria('sites')}
         >
-          Front-end
+          Sites
         </button>
         <button
-          className={`px-6 py-2 rounded-full font-semibold transition shadow ${categoria === 'back' ? 'bg-blue-500 text-white' : 'bg-[#181818] text-blue-500 hover:bg-blue-500 hover:text-white'}`}
-          onClick={() => setCategoria('back')}
+          className={`px-6 py-2 rounded-full font-semibold transition shadow ${categoria === 'bots' ? 'bg-blue-500 text-white' : 'bg-[#181818] text-blue-500 hover:bg-blue-500 hover:text-white'}`}
+          onClick={() => setCategoria('bots')}
         >
-          Back-end
+          Bots
+        </button>
+        <button
+          className={`px-6 py-2 rounded-full font-semibold transition shadow ${categoria === 'sistemas' ? 'bg-blue-500 text-white' : 'bg-[#181818] text-blue-500 hover:bg-blue-500 hover:text-white'}`}
+          onClick={() => setCategoria('sistemas')}
+        >
+          Sistemas
         </button>
       </div>
+
+      {/* Cards dos planos */}
       <div className="grid md:grid-cols-3 gap-8">
         {planos.map((plano, idx) => (
           <div key={idx} className="bg-[#181818] p-8 rounded-xl shadow-lg neon flex flex-col items-center hover:shadow-[0_0_8px_2px_#3b82f6] transition">
             <h3 className="text-xl font-bold text-blue-500 mb-2">{plano.nome}</h3>
-            <div className="text-3xl font-extrabold text-blue-500 mb-2">{plano.preco}</div>
             <p className="text-gray-300 mb-4 text-center">{plano.descricao}</p>
             <ul className="mb-4 w-full">
               {plano.itens.map((item, i) => (

@@ -7,7 +7,7 @@ export default function Navbar() {
     <nav className="flex justify-between items-center px-8 py-4 bg-[#0f0f0f] text-white shadow-lg" id='home'>
       {/* Esquerda: Nome da empresa */}
       <div className="font-bold text-xl text-blue-500 flex items-center gap-2">
-        <span>Front Dev Studio</span>
+        <a href="/"><span>Front Dev Studio</span></a>
       </div>
       {/* Direita: Links funcionais com ícones */}
       <div className="flex gap-6 hidden md:flex">

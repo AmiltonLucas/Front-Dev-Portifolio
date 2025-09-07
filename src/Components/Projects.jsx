@@ -10,24 +10,28 @@ const projetosSites = [
     descricao: "Página de vendas de cesta básica do nosso cliente Wilson.",
     imagem: Projeto,
     tecnologias: "React, TailwindCSS, Backend em Django/Python",
+    link: "/projeto", // 🔗 link do projeto
   },
   {
     nome: "Site Runaholic",
     descricao: "Site de venda de produtos esportivos do nosso cliente Jonas.",
     imagem: Projeto2,
     tecnologias: "React, TailwindCSS, Backend em Django/Python",
+    link: "/projeto",
   },
   {
     nome: "Landing Page Pet Shop",
     descricao: "Landing page para pet shop com design moderno.",
     imagem: Projeto3,
     tecnologias: "HTML, CSS, JavaScript",
+    link: "/projeto",
   },
   {
     nome: "Site Car Services",
     descricao: "Site para serviços automotivos com agendamento online.",
     imagem: Projeto4,
     tecnologias: "HTML, CSS, JavaScript",
+    link: "/projeto",
   },
 ];
 
@@ -38,6 +42,7 @@ const projetosBots = [
     imagem:
       "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80",
     tecnologias: "Node.js, Express, MongoDB",
+    link: "/projeto",
   },
   {
     nome: "Sistema de Autenticação",
@@ -45,6 +50,7 @@ const projetosBots = [
     imagem:
       "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80",
     tecnologias: "NestJS, JWT",
+    link: "/projeto",
   },
   {
     nome: "Bot Telegram Financeiro",
@@ -52,6 +58,7 @@ const projetosBots = [
     imagem:
       "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80",
     tecnologias: "Python, Telebot, PostgreSQL",
+    link: "/projeto",
   },
 ];
 
@@ -62,6 +69,7 @@ const projetosSistemas = [
     imagem:
       "https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=400&q=80",
     tecnologias: "React, Node.js, MySQL",
+    link: "/projeto",
   },
   {
     nome: "ERP Personalizado",
@@ -69,6 +77,7 @@ const projetosSistemas = [
     imagem:
       "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=400&q=80",
     tecnologias: "Vue, Laravel, PostgreSQL",
+    link: "/projeto",
   },
   {
     nome: "Dashboard Analytics",
@@ -76,6 +85,7 @@ const projetosSistemas = [
     imagem:
       "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=400&q=80",
     tecnologias: "Next.js, TailwindCSS, MongoDB",
+    link: "/projeto",
   },
 ];
 
@@ -83,9 +93,11 @@ function CardFlip({ projeto }) {
   const [flipped, setFlipped] = useState(false);
 
   return (
-    <div
-      className="w-72 h-96 perspective cursor-pointer"
-      onClick={() => setFlipped(!flipped)}
+    <a
+      href={projeto.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-72 h-96 perspective cursor-pointer block"
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
     >
@@ -123,7 +135,7 @@ function CardFlip({ projeto }) {
           </span>
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 
